@@ -1,0 +1,1 @@
+* constante de carga de imgs desde react - No public - hace la carga dinamica - la necesitare en varios Componetes . asi puedo usarla como Helper

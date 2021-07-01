@@ -1,5 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { heroImages } from '../../helpers/heroImages';
+
+
+
+
+
+/* esto es propio de webpack 
+ * material adjunto ha enlace 211 - true : paraque busque tambien en subdirectorios
+*/
+const heroeImage = require.context('../../assets/heroes', true );
+
 
 export const HeroCard = ({
     id,   // o recibir heroe => luego desesctructurarlo .. queda a nuesta descricion 
@@ -17,7 +28,9 @@ export const HeroCard = ({
             <div className="row no-gutters">
 
                 <div className="col-md-4">
-                    <img src={ `./assets/heroes/${ id }.jpg` } className="card-img" alt={ superhero } />
+                   {/*  <img src={ `./assets/heroes/${ id }.jpg` } className="card-img" alt={ superhero } /> */}
+                  <img src={ heroImages(`./${ id }.jpg`).default } className="card-img" alt={ superhero } />
+                    
                 </div>
 
                 <div className="col-md-8">

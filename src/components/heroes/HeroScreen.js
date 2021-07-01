@@ -1,9 +1,18 @@
 import React  , { useMemo } from 'react';
 import { useParams , Redirect } from 'react-router-dom';
+import { heroImages } from '../../helpers/heroImages';
 import { getHeroById } from '../../selectors/getHeroById'; 
 
+//import batman from '../../assets/heroes/dc-arrow.jpg';  // recurso statico
+
+
+
+
+
+
+
 export const HeroScreen = ({ history }) => { /* extraer url hay mucha manera : ver video : 176 -  ver props por default */
-     // history props por default - cuando estamos dentro del router . 
+    // history props por default - cuando estamos dentro del router . 
 
     // este es custom hook : va extraer los params que van por url .
     const { heroeId }/*  params  */= useParams();
@@ -23,7 +32,6 @@ export const HeroScreen = ({ history }) => { /* extraer url hay mucha manera : v
 
      
 
-   
 
     const handleReturn = () => {
 
@@ -44,12 +52,16 @@ export const HeroScreen = ({ history }) => { /* extraer url hay mucha manera : v
         characters,
     } = hero; 
 
+
+
     return (
         <div className="row mt-5">
 
            <div className="col-4">
                <img 
-                   src={ `../assets/heroes/${ heroeId }.jpg` } 
+                  // src={ `../assets/heroes/${ heroeId }.jpg` }  // carga desde public/assets - usamos siguiente alternativa : vamos a mover carpeta de imgs a src:react
+                  // src={ batman }  //carga statica se usa en backfroun etc .. 
+                   src={ heroImages(`./${ heroeId }.jpg`).default } // en este caso la imagen tiene que ser dinamica 
                    alt={ superhero }
                    className="img-thumbnail animate__animated animate__fadeInLeft"
                />
@@ -76,7 +88,6 @@ export const HeroScreen = ({ history }) => { /* extraer url hay mucha manera : v
            </div>
 
        </div>
-       
        
     )
 }
